@@ -1,6 +1,36 @@
 'use strict';
 
+/**
+ * Typewriting Effect for the Paragraph
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  const heroText = document.querySelector(".hero-text"); // Select the hero-text element
+  const text = "Explore on the world's best & largest NFT marketplace"; // The text to animate
+  let index = 0; // Start at the first character
 
+  
+
+  // Ensure the element exists
+  if (heroText) {
+    function typeWriterEffect() {
+      if (index < text.length) {
+        heroText.textContent += text.charAt(index); // Add one letter at a time
+        index++;
+        setTimeout(typeWriterEffect, 100); // Typing speed (100ms per letter)
+      } else {
+        setTimeout(() => {
+          heroText.textContent = ""; // Clear the text after typing is complete
+          index = 0; // Reset index
+          typeWriterEffect(); // Restart typing animation
+        }, 2000); // Pause before restarting (2 seconds)
+      }
+    }
+
+    typeWriterEffect(); // Start the typing effect
+  } else {
+    console.error('Element with class "hero-text" not found.');
+  }
+});
 
 /**
  * NAVBAR TOGGLE FOR MOBILE
@@ -54,6 +84,8 @@ const sliderInit = function (currentSlider) {
   const totalSliderItems = sliderContainer.childElementCount - totalSliderVisibleItems;
 
   let currentSlidePos = 0;
+
+  
 
   const moveSliderItem = function () {
     sliderContainer.style.transform = `translateX(-${sliderContainer.children[currentSlidePos].offsetLeft}px)`;

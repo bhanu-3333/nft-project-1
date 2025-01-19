@@ -181,7 +181,7 @@ body {
   #REUSED STYLE
 \*-----------------------------------*/
 
-.container { padding-inline: 12px; }
+.container { margin-right: 0; }
 
 .body-bg-shape {
   position: fixed;
